@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.ohjelmointiprojekti1.domain.Quiz;
+import com.example.ohjelmointiprojekti1.domain.QuizRepository;
+
 @Controller
 public class QuizController {
 	
