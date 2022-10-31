@@ -17,10 +17,10 @@ import com.example.ohjelmointiprojekti1.domain.QuizRepository;
 @Controller
 public class QuizController {
 
-	@Autowired
+	
 	QuizRepository quizRepository;
 
-	@Autowired
+	
 	QuestionRepository questionRepository;
 
 	// LIST ALL QUIZZES
