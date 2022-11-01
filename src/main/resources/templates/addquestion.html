@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New Question</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add new question</h1>
+	<div>
+		<form th:object="${question}" th:action="@{save}" action="#" method="post">
+			<!-- ID-FIELD IS HIDDEN FROM USER -->
+			<input type="hidden" th:field="*{questionId}" class="form-control"/>
+		
+			<!-- TAKE NEW QUESTION INPUT FROM USER -->
+		  	<label for="questionText">Question</label>
+			<input type="text" th:field="*{questionText}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<input type="submit" value="save"></input>	
+		</form>		
+	</div>
+</body>
+</html>
