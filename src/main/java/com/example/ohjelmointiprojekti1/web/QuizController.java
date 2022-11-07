@@ -43,7 +43,7 @@ public class QuizController {
 		question.setQuiz(quiz);
 		model.addAttribute("question", question);
 		System.out.print(quiz);
-		return "/addquestion";
+		return "addquestion";
 	}
 
 	// save the new question and redirect to /homepage
