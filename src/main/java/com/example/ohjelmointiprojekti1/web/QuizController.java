@@ -46,7 +46,7 @@ public class QuizController {
 	public String saveQuestion(Question question) {
     	System.out.println(question);
 		questionrepository.save(question);
-		return "redirect:homepage";
+		return "redirect:/";
 
 	}
 }
