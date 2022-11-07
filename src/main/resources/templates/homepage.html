@@ -7,17 +7,25 @@
 	</head>
 	
 	<body>
-		<h1> Questions </h1>
-		
-		<table class="table table-striped">
-			<tr>
-				<th>Question</th>
-			</tr>
+	
+	<h1> Create new quiz </h1>
+	
+			<form th:object="${quiz}" th:action="@{savequiz}" action="#" method="post">
+
+			<!-- Quiz name -->
+		  	<label for="name">Quiz name</label>
+			<input type="text" th:field="*{name}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
 			
-			<tr th:each = "question : ${questions}">
-				<td th:text="${question.questionText}"></td>
-			</tr>
-		</table>
+			<input type="submit" value="save"></input>	
+		</form>		
+	
+		
+		
+
 		<a href="/add">Add question</a>
+		
+
+		
 	</body>
 </html>
