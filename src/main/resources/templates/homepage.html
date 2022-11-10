@@ -10,8 +10,7 @@
 	
 	<h1> Create new quiz </h1>
 	
-			<form th:object="${quiz}" th:action="@{savequiz}" action="#" method="post">
-
+			<form th:object="${quiz}" th:action="@{/savequiz}" action="#" method="post">
 			<!-- Quiz name -->
 		  	<label for="name">Quiz name</label>
 			<input type="text" th:field="*{name}" />
@@ -20,10 +19,35 @@
 			<input type="submit" value="save"></input>	
 		</form>		
 	
+	<table>
+			<tr>
+			<th>Quiz name</th>
+			<th>Quiz ID</th>
+			</tr>
+			<tr th:each= "quiz : ${quizzes}">
+			<td th:text="${quiz.name}"></td>
+			<td th:text="${quiz.quizId}"></td>
+			</tr>
+			<tr>
+			<th>Question name</th>
+			<th>Question.quiz ID</th>
+			<th>Question ID</th>
+			
+			<tr th:each="question : ${questions}">
+			<td th:text="${question.questionText}"></td>
+			<td th:text="${question.quiz.quizId}"></td>
+			<td th:text="${question.questionId}"></td>
+			</tr>
+			
+			
+		</table>
+
+
+	
 		
 		
 
-		<a href="/add">Add question</a>
+	
 		
 
 		

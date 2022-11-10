@@ -1,5 +1,8 @@
 package com.example.ohjelmointiprojekti1.web;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.ohjelmointiprojekti1.domain.Question;
 import com.example.ohjelmointiprojekti1.domain.QuestionRepository;
@@ -45,7 +49,7 @@ public class QuizController {
 	}
 
 	// save the new question and redirect to /homepage
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/savequestion", method = RequestMethod.POST)
 	public String saveQuestion(Question question) {
 		System.out.println(question);
 		questionrepository.save(question);
@@ -53,12 +57,26 @@ public class QuizController {
 
 	}
 
-	@RequestMapping(value = "/savequiz", method = RequestMethod.POST)
+	@RequestMapping(value = "/savequiz")
 	public String saveQuiz(Quiz quiz) {
 		System.out.println(quiz);
-		quizrepository.save(quiz);
-		return "redirect:/add/1";
+		quizrepository.save(quiz); // save updates quiz object to get ID
+		Long quizId = quiz.getQuizId();
+		System.out.print(quiz);
+		return "redirect:/add/" + quizId;
 
 	}
 
+	// RESTful quizlist
+	@RequestMapping(value = "/quizlist", method = RequestMethod.GET)
+	public @ResponseBody List<Quiz> quizlistRest() {
+		return (List<Quiz>) quizrepository.findAll();
+	}
+
+	// RESTful Question list
+	@RequestMapping(value = "/quizlist/{id}", method = RequestMethod.GET)
+	public @ResponseBody Optional<Question> findQuestionRest(@PathVariable("id") Long questionId) {
+		return questionrepository.findById(questionId);
+
+	}
 }
