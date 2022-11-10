@@ -24,8 +24,6 @@ public class QuizController {
 
 	// list all questions on homepage
 
-	// list all questions on /homepage
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String listQuestions(Model model) {
 		model.addAttribute("questions", questionrepository.findAll());
