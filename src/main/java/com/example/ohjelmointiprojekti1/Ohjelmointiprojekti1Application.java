@@ -27,15 +27,15 @@ public class Ohjelmointiprojekti1Application {
 	public CommandLineRunner demo(AnswerRepository arepository, QuestionRepository querepository, QuizRepository quirepository){
 	
 		return (args) -> {
-			//log.info("Save example quizzes");
-			//Quiz qz1 = new Quiz(null);
-			//quirepository.save(qz1);
+			log.info("Save example quizzes");
+			Quiz qz1 = new Quiz("kysely1");
+			quirepository.save(qz1);
 
-			//log.info("Save example questions");
-			//Question q1 = new Question("kysymys1", qz1);
-			//querepository.save(q1);
-			//log.info("Save example answers");
-			Answer a1 = new Answer(0,"vastaus1",null);
+			log.info("Save example questions");
+			Question q1 = new Question("kysymys1", qz1);
+			querepository.save(q1);
+			log.info("Save example answers");
+			Answer a1 = new Answer(0,"vastaus1",q1);
 			arepository.save(a1);
 
 			log.info("Vastaukset");

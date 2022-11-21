@@ -47,10 +47,15 @@
 			<scope>runtime</scope>
 		</dependency>-->
 		
+		
 <dependency>
     <groupId>org.postgresql</groupId>
     <artifactId>postgresql</artifactId>
     </dependency>
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+	</dependency>
 
 		
 		<dependency>
