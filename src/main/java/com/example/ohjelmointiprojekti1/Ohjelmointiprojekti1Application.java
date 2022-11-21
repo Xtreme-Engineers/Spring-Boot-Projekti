@@ -24,17 +24,18 @@ public class Ohjelmointiprojekti1Application {
 	}
 
 	@Bean
-	public CommandLineRunner quizDemo(AnswerRepository arepository, QuestionRepository querepository, QuizRepository quirepository){
+	public CommandLineRunner demo(AnswerRepository arepository, QuestionRepository querepository, QuizRepository quirepository){
 	
 		return (args) -> {
-			log.info("Save example quizzes");
-			quirepository.save(new Quiz("kysely1"));
+			//log.info("Save example quizzes");
+			//Quiz qz1 = new Quiz(null);
+			//quirepository.save(qz1);
 
-			log.info("Save example questions");
-			querepository.save(new Question("kysymys1", quirepository.findByName("kysely1").get(0)));
-
+			//log.info("Save example questions");
+			//Question q1 = new Question("kysymys1", qz1);
+			//querepository.save(q1);
 			log.info("Save example answers");
-			Answer a1 = new Answer("vastaus1",querepository.findByQuestionText("kysymys1").get(0));
+			Answer a1 = new Answer("vastaus1",null);
 			arepository.save(a1);
 
 			log.info("Vastaukset");
