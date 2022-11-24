@@ -35,7 +35,7 @@ public class QuizRestController {
 	}
 
 	// RESTful quiz by ID
-	@RequestMapping(value = "/quiz/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/quizzes/{id}", method = RequestMethod.GET)
 	public Quiz findQuiz(@PathVariable("id") Long quizId) {
 		Quiz quiz = quizrepository.findById(quizId).get();
 		return quiz;
@@ -55,7 +55,7 @@ public class QuizRestController {
 	}
 
 	// RESTful get question by ID
-	@RequestMapping(value = "/question/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/questions/{id}", method = RequestMethod.GET)
 	public Question findQuestion(@PathVariable("id") Long questionId) {
 		Question question = questionrepository.findById(questionId).get();
 		return question;
@@ -74,10 +74,23 @@ public class QuizRestController {
 		return (List<Answer>) answerrepository.findAll();
 	}
 
-	@RequestMapping(value = "/answers", method = RequestMethod.POST)
-	public Iterable<Answer> saveAnswerRest(@RequestBody List<Answer> answers) {
+	@RequestMapping(value = "/answers/{id}", method = RequestMethod.GET)
+	public Answer findAnswer(@PathVariable("id") Long answerId) {
+		Answer answer = answerrepository.findById(answerId).get();
+		return answer;
 
-		return answerrepository.saveAll((Iterable<Answer>) answers);
+	}
+
+	// @RequestMapping(value = "/answers", method = RequestMethod.POST)
+	// public Iterable<Answer> saveAnswersRest(@RequestBody List<Answer> answers) {
+
+	// return answerrepository.saveAll((Iterable<Answer>) answers);
+	// }
+
+	@RequestMapping(value = "/answers", method = RequestMethod.POST)
+	public Answer saveAnswerRest(@RequestBody Answer answer) {
+
+		return answerrepository.save(answer);
 	}
 
 }
