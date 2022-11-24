@@ -9,42 +9,29 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import com.example.ohjelmointiprojekti1.domain.Quiz;
-
 @Entity
 public class Question {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long questionId;
 	private String questionText;
-	
-    @ManyToOne
-    @JsonIgnoreProperties ("questions") 
-    @JoinColumn(name = "quizId")
-    private Quiz quiz;
-	
+
+	@ManyToOne
+	@JsonIgnoreProperties("question")
+	@JoinColumn(name = "quizId")
+	private Quiz quiz;
+
 	public Question() {
-		super();
-		this.questionId = null;
-		this.questionText = null;
-		this.quiz = null;
 	}
-	
+
 	public Question(String questionText, Quiz quiz) {
 		super();
 		this.questionText = questionText;
 		this.quiz = quiz;
 	}
-	
-	public Question(Long questionId, String questionText, Quiz quiz) {
-		super();
-		this.questionId = questionId;
-		this.questionText = questionText;
-		this.quiz = quiz;
-	}
 
 	// SETTERS AND GETTERS
-	
+
 	public Long getQuestionId() {
 		return questionId;
 	}
@@ -72,7 +59,6 @@ public class Question {
 	@Override
 	public String toString() {
 		return "Question [questionId=" + questionId + ", questionText=" + questionText + ", quiz=" + quiz + "]";
-	}	
-	
-}
+	}
 
+}

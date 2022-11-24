@@ -9,7 +9,7 @@
 	<div>
 	
 	
-		<form th:object="${question}" th:action="@{/savequestion}" action="#" method="post">
+		<form th:object="${question}" th:action="@{/savequestion/{id}(id=${id})}" action="#" method="post">
 			<!-- ID-FIELD IS HIDDEN FROM USER -->
 			<!-- <input type="hidden" th:value=${parentquiz.quizId} th:field="*{quiz.quizId}" class="form-control"/> -->
 			<input type="hidden" th:field="*{quiz.quizId}" class="form-control"/>
@@ -20,6 +20,8 @@
 			
 			<input type="submit" value="save"></input>	
 		</form>		
-	</div>
+		
+	<form th:action="@{../}" action"#">
+	<input type="submit" value="back"></input>	
 </body>
 </html>

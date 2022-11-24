@@ -11,24 +11,23 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import com.example.ohjelmointiprojekti1.domain.Question;
-
 @Entity
 public class Quiz {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long quizId;
 	private String name;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "quiz")
 	@JsonIgnoreProperties("quiz")
 	private List<Question> questions;
-	
-	public Quiz() {}
-	
+
+	public Quiz() {
+	}
+
 	public Quiz(String name) {
 		super();
-		this.name = null;
+		this.name = name;
 	}
 
 	public Long getQuizId() {
@@ -57,6 +56,6 @@ public class Quiz {
 
 	@Override
 	public String toString() {
-		return "Quiz [quizId=" + quizId + ", name=" + name + ", questions=" + questions + "]";
+		return "Quiz [quizId=" + quizId + ", name=" + name + "]";
 	}
 }

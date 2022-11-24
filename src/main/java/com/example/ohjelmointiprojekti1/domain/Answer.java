@@ -12,57 +12,52 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 public class Answer {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-private long answerId;
-private String answerText;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long answerId;
+	private String answerText;
 
-@ManyToOne
-@JsonIgnoreProperties("answers") 
-@JoinColumn(name = "questionId")
-private Question question;
+	@ManyToOne
+	@JsonIgnoreProperties("answers")
+	@JoinColumn(name = "questionId")
+	private Question question;
 
-public long getAnswerId() {
-	return answerId;
-}
+	public long getAnswerId() {
+		return answerId;
+	}
 
-public void setAnswerId(long answerId) {
-	this.answerId = answerId;
-}
+	public void setAnswerId(long answerId) {
+		this.answerId = answerId;
+	}
 
-public String getAnswerText() {
-	return answerText;
-}
+	public String getAnswerText() {
+		return answerText;
+	}
 
-public void setAnswerText(String answerText) {
-	this.answerText = answerText;
-}
+	public void setAnswerText(String answerText) {
+		this.answerText = answerText;
+	}
 
-public Question getQuestion() {
-	return question;
-}
+	public Question getQuestion() {
+		return question;
+	}
 
-public void setQuestion(Question question) {
-	this.question = question;
-}
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
 
-public Answer(long answerId, String answerText, Question question) {
-	super();
-	this.answerId = answerId;
-	this.answerText = answerText;
-	this.question = question;
-}
+	public Answer(String answerText, Question question) {
+		super();
+		this.answerText = answerText;
+		this.question = question;
+	}
 
-public Answer() {
-	super();
-}
+	public Answer() {
+		super();
+	}
 
-@Override
-public String toString() {
-	return "Answer [answerId=" + answerId + ", answerText=" + answerText + ", question=" + question + "]";
-}
-
-
-
-
+	@Override
+	public String toString() {
+		return "Answer [answerId=" + answerId + ", answerText=" + answerText + ", question=" + question + "]";
+	}
 
 }
