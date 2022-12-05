@@ -10,7 +10,7 @@
 	<h2>All Quizzes</h2>
 	<p>
 		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
-			href="/quizlist">/quizlist</a></strong>
+			href="/quizzes">/quizzes</a></strong>
 	</p>
 	<p>
 		<strong>JSON Example:</strong>
@@ -38,55 +38,40 @@
   },
 ]</code></pre>
 
-	<h2>Quiz by Id</h2>
+	<h2>Quiz and questions by Id</h2>
 	<p>
-		<strong>GET </strong><strong> /quizlist/{id} </strong> <strong>
-		<a href="/quizlist/2">/quizlist/2</a></strong>
+		<strong>GET </strong><strong> /quizzes/{id} </strong> <strong>
+		<a href="/quizzes/1">/quizzes/1</a></strong>
 	</p>
 	<p>
 		<strong>JSON Example:</strong>
 	</p>
 	<pre><code>{
-    "questionId": 2,
-	"questionText": "Kysymys1",
-	"quiz": {
-		"quizId": 1,
-		"name": "Quiz1"
-	}
+  "quizId": 1,
+  "name": null,
+  "questions": [
+    {
+      "questionId": 2,
+      "questionText": "kysymys1"
+    }
+  ]
+}
 }</code></pre>
-	<!-- <h2>New Car</h2>
+	   <h2>New Answer</h2>
 	<p>
-		<strong>POST </strong> <strong> /cars</strong> (Test
-		with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
+		<strong>POST </strong> 
+		<strong> <a href="/answers">/answers</a></strong>
 	</p>
 	<p>
 		<strong>JSON Example:</strong>
 	</p>
 	<pre><code>{
-    "model": "Toyota",
-    "year": 2001
-}</code></pre>
-	 <h2>Car Model Statistics</h2>
-	<p>
-		<strong>GET </strong> <strong> /carsmodelstatistics </strong>
-			<a href="/carsmodelstatistics">/carsmodelstatistics</a></strong>
-	</p>
-	<p>
-		<strong>JSON Example:</strong>
-	</p>
-	<pre><code>[
-	{
-	model: "VW",
-	count: 3
-	},
-	{
-	model: "Tesla",
-	count: 2
-	},
-	{
-	model: "Saab",
-	count: 1
-	}
-]</code></pre> -->
+    "answerText": "Vastausteksti"
+    "question": {
+    "questionId": 7
+    }
+    
+    
+
 </body>
 </html>

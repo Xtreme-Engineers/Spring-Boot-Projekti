@@ -47,6 +47,11 @@ public class QuizController {
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteQuiz(@PathVariable("id") Long quizId, Model model) {
+
+		Quiz poistettava = quizrepository.findById(quizId).get();
+
+		System.out.println("Poistettava quiz on: " + poistettava);
+
 		quizrepository.deleteById(quizId);
 		return "redirect:../";
 	}

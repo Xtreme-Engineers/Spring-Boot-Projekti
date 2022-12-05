@@ -71,6 +71,10 @@ public class QuizRestController {
 	// RESTful questions list
 	@RequestMapping(value = "/answers", method = RequestMethod.GET)
 	public List<Answer> answerRest() {
+
+		Iterable<Answer> answers = answerrepository.findAll();
+		System.out.println("answers rest are:" + answers);
+
 		return (List<Answer>) answerrepository.findAll();
 	}
 
