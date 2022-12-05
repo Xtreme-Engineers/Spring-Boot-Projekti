@@ -28,7 +28,7 @@ public class Ohjelmointiprojekti1Application {
 
 		return (args) -> {
 			log.info("Save example quizzes");
-			Quiz qz1 = new Quiz("Hyvinvointi kysely");
+			Quiz qz1 = new Quiz("Hyvinvointikysely");
 			quirepository.save(qz1);
 
 			log.info("Save example questions");
@@ -50,7 +50,7 @@ public class Ohjelmointiprojekti1Application {
 			querepository.save(q8);
 			Question q9 = new Question("Koetko, että ongelmat ovat vaikuttaneet opintomenestykseen?", qz1);
 			querepository.save(q9);
-			Question q10 = new Question("oetko yksinäisyyttä koulussa?", qz1);
+			Question q10 = new Question("Koetko yksinäisyyttä koulussa?", qz1);
 			querepository.save(q10);
 			Question q11 = new Question(
 					"Mitä kehitysideoita sinulla olisi koululle liittyen mielenterveysongelmien ja yksinäisyyden kannalta?",

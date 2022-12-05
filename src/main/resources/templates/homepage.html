@@ -24,11 +24,12 @@
 		<tr>
 		<th>Quiz name</th>
 		</tr>
-		<tr th:each="quiz : ${quizzes}">
-		<td th:text="${quiz.name}"></td>
-		<td><a th:href="@{/delete/{id}(id=${quiz.quizId})}" class="btn btn-danger" >Delete</a></td>
+		<tr th:each="quiz : ${quizzes}">	
+		<td><a th:href="@{/quiz/{id}(id=${quiz.quizId})}" th:text="${quiz.name}"></a></td>
+		
 		</tr>
 		</table>
+		
 		
 		
 	

@@ -5,7 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Add new question</h1>
+	<h2>
+	<p th:text="${quiz.name}"</p>
+	</h2>
 	<div>
 	
 	
@@ -14,14 +16,27 @@
 			<!-- <input type="hidden" th:value=${parentquiz.quizId} th:field="*{quiz.quizId}" class="form-control"/> -->
 			<input type="hidden" th:field="*{quiz.quizId}" class="form-control"/>
 			<!-- TAKE NEW QUESTION INPUT FROM USER -->
-		  	<label for="questionText">Question</label>
+		  	<label for="questionText">Add new question</label>
 			<input type="text" th:field="*{questionText}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
 			<input type="submit" value="save"></input>	
 		</form>		
+		<div style="clear: both; display: block; height: 10px;"></div>
+			<form th:action="@{../}" action"#">
+				<input type="submit" value="back"></input>	
 		
-	<form th:action="@{../}" action"#">
-	<input type="submit" value="back"></input>	
+		<table>
+
+		<div style="clear: both; display: block; height: 10px;"></div>
+		<b> Questions: </b>
+		<tr th:each="question : ${questions}">
+		<td th:text="${question.questionText}"></td>
+	
+		
+		</tr>
+		</table>
+		
+
 </body>
 </html>

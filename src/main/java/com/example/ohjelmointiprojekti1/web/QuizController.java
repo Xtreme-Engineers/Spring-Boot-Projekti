@@ -1,5 +1,7 @@
 package com.example.ohjelmointiprojekti1.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,7 +42,11 @@ public class QuizController {
 		// model.addAttribute("parentquiz", quiz);
 		Question question = new Question();
 		question.setQuiz(quiz);
+		List<Question> questionlist = quiz.getQuestions();
+
+		model.addAttribute("quiz", quiz);
 		model.addAttribute("question", question);
+		model.addAttribute("questions", questionlist);
 		System.out.print(quiz);
 		return "addquestion";
 	}
@@ -72,7 +78,7 @@ public class QuizController {
 	}
 
 	@RequestMapping(value = "/savequiz")
-	public String saveQuiz(Quiz quiz, Model odel) {
+	public String saveQuiz(Quiz quiz) {
 		System.out.println(quiz);
 		quizrepository.save(quiz); // save updates quiz object to get ID
 		Long quizId = quiz.getQuizId();
@@ -81,6 +87,18 @@ public class QuizController {
 		// Model.addAttribute("id", ID);
 		return "redirect:/add/" + quizId;
 
+	}
+
+	@RequestMapping(value = "/quiz/{id}")
+	public String showQuiz(@PathVariable("id") Long quizId, Model model) {
+
+		Quiz quiz = quizrepository.findById(quizId).get();
+		List<Question> questionlist = quiz.getQuestions();
+		System.out.println("Quiz questions are:" + questionlist);
+		model.addAttribute("questions", questionlist);
+		model.addAttribute("quiz", quiz);
+
+		return "singlequiz";
 	}
 
 }

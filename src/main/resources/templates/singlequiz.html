@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+	<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<title>Server Programming with Spring Boot</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	
+	<body>
+	
+		<h2>
+	<p th:text="${quiz.name}"</p>
+	</h2>
+	
+
+		
+		
+		<table>
+
+		<div style="clear: both; display: block; height: 10px;"></div>
+		<tr th:each="question : ${questions}">
+		<td th:text="${question.questionText}"></td>
+	
+		
+		</tr>
+		</table>
+		
+		<form th:action="@{../}" action"#">
+	<input type="submit" value="back"></input>
+		
+		
+		
+	
+
+
+	
+		
+		
+
+	
+		
+
+		
+	</body>
+</html>
