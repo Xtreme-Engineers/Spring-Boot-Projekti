@@ -35,19 +35,19 @@ public class QuizController {
 		return "homepage";
 	}
 
-	// add new question
+	// Uuden kysymyksen luonti
 	@RequestMapping(value = "/add/{id}")
 	public String addQuestion(@PathVariable("id") Long quizId, Model model) {
-		Quiz quiz = quizrepository.findById(quizId).get();
-		// model.addAttribute("parentquiz", quiz);
-		Question question = new Question();
-		question.setQuiz(quiz);
-		List<Question> questionlist = quiz.getQuestions();
 
+		Quiz quiz = quizrepository.findById(quizId).get(); // Hakee kyselyn, johon kysymys lisätään
+		Question question = new Question();
+		question.setQuiz(quiz); // Antaa kysymykselle kyselyn ID:n
+		List<Question> questionlist = quiz.getQuestions(); // Hakee kyselyn kysymykset
+
+		// Palauttaa thymeleaf templatelle kyselyn nimen, kysymysobjektin ja kysymykset
 		model.addAttribute("quiz", quiz);
 		model.addAttribute("question", question);
-		model.addAttribute("questions", questionlist);
-		System.out.print(quiz);
+		model.addAttribute("questions", questionlist); //
 		return "addquestion";
 	}
 
@@ -62,10 +62,11 @@ public class QuizController {
 		return "redirect:../";
 	}
 
-	// save the new question and redirect to /homepage
+	// Tallentaa kysymyksen tietokantaan ja uudelleenohjaa takaisin uuden kysymyksen
+	// luontiin
 	@RequestMapping(value = "/savequestion/{id}", method = RequestMethod.POST)
 	public String saveQuestion(@PathVariable("id") Long quizId, Question question) {
-		System.out.println(question);
+
 		questionrepository.save(question);
 		return "redirect:/add/" + quizId;
 
@@ -77,16 +78,13 @@ public class QuizController {
 		return "rest";
 	}
 
+	// Uuden kyselyn luonti
 	@RequestMapping(value = "/savequiz")
 	public String saveQuiz(Quiz quiz) {
-		System.out.println(quiz);
-		quizrepository.save(quiz); // save updates quiz object to get ID
-		Long quizId = quiz.getQuizId();
-		System.out.print(quiz);
-		// Long ID = quiz.getQuizId();
-		// Model.addAttribute("id", ID);
-		return "redirect:/add/" + quizId;
 
+		quizrepository.save(quiz);
+		Long quizId = quiz.getQuizId(); // Hakee Quiz objektin ID:n
+		return "redirect:/add/" + quizId; // Uudelleenohjaus sivulle, jossa lisätään kysymykset
 	}
 
 	@RequestMapping(value = "/quiz/{id}")

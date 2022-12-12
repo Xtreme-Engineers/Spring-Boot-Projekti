@@ -12,8 +12,7 @@
 	
 	
 		<form th:object="${question}" th:action="@{/savequestion/{id}(id=${id})}" action="#" method="post">
-			<!-- ID-FIELD IS HIDDEN FROM USER -->
-			<!-- <input type="hidden" th:value=${parentquiz.quizId} th:field="*{quiz.quizId}" class="form-control"/> -->
+
 			<input type="hidden" th:field="*{quiz.quizId}" class="form-control"/>
 			<!-- TAKE NEW QUESTION INPUT FROM USER -->
 		  	<label for="questionText">Add new question</label>

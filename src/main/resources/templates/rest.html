@@ -7,7 +7,7 @@
 <body>
 <h1>REST Home Page</h1>
 
-	<h2>All Quizzes</h2>
+	<h2>All Quizzes and questions</h2>
 	<p>
 		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
 			href="/quizzes">/quizzes</a></strong>
@@ -18,27 +18,27 @@
 	<pre><code>[
   {
     "quizId": 1,
-    "name": "Quiz1",
+    "name": "Hyvinvointikysely",
     "questions": [
     	{
-    		"questionId" : 2,
-    		"questionText": "Kysymys1"
+    		"questionId" : 5,
+    		"questionText": "Oletko tyytyväinen tämänhetkiseen opintomenestykseesi?"
     	}
     ]
   },
   {
     "quizId": 2,
-    "name": "Quiz2",
+    "name": "Kurssipalaute",
     "questions": [
     	{
-    		"questionId" : 4,
-    		"questionText": "Kysymys2"
+    		"questionId" : 15,
+    		"questionText": "Miten mielestäsi kurssia voi parantaa?"
     	}
     ]
   },
 ]</code></pre>
 
-	<h2>Quiz and questions by Id</h2>
+	<h2>Single quiz by ID</h2>
 	<p>
 		<strong>GET </strong><strong> /quizzes/{id} </strong> <strong>
 		<a href="/quizzes/1">/quizzes/1</a></strong>
@@ -48,12 +48,20 @@
 	</p>
 	<pre><code>{
   "quizId": 1,
-  "name": null,
+  "name": Hyvinvointikysely,
   "questions": [
     {
-      "questionId": 2,
-      "questionText": "kysymys1"
-    }
+        "questionId": 2,
+        "questionText": "Ikä:"
+      },
+      {
+        "questionId": 3,
+        "questionText": "Sukupuoli:"
+      },
+      {
+        "questionId": 4,
+        "questionText": "Opiskeluvuosi:"
+      }
   ]
 }
 }</code></pre>
@@ -66,9 +74,10 @@
 		<strong>JSON Example:</strong>
 	</p>
 	<pre><code>{
-    "answerText": "Vastausteksti"
+    "answerText": "3. vuosi",
     "question": {
-    "questionId": 7
+    "questionId": 4
+  	}
     }
     
     
